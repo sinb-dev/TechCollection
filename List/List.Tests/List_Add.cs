@@ -34,7 +34,7 @@ public class List_Add
         Assert.Equal(1,list.Count);
 
         list.Add(100);
-        Assert.Equal(list.Get(1), 100);
+        Assert.Equal(100, list.Get(1));
     }
 
     [Fact]
@@ -56,6 +56,18 @@ public class List_Add
 
         list.Add(null);
         Assert.Equal(0,list.Count);
+    }
+    [Fact]
+    public void AddLargeCount()
+    {
+        List list = new List();
+        const int count = 1000000;
+        for (int i = 0; i < count; i++)
+        {
+            list.Add($"{i}");
+            
+        }
+        Assert.Equal(count, list.Count);
     }
 
 }
