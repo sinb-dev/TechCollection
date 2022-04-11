@@ -37,14 +37,4 @@ public class List : IEnumerable<object>
     }
 
     public int Count {get;}
-
-    static void Main(string[] args)
-    {
-        List array = new List();
-        foreach (int i in array)
-        {
-
-        }
-
-    }
 }
