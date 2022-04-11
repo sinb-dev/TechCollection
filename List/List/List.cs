@@ -4,26 +4,58 @@ namespace TCCollections;
 public class List : IEnumerable<object>
 {
     object[] list = new object[10];
+    int size = 0;
+    
 
     public void Add(object obj)
     {
-        throw new NotImplementedException();
+        if (obj == null) return;
+
+        if (size == list.Length)
+        {
+            object[] newList = new object[list.Length * 10];
+            for (int i= 0; i < list.Length; i++)
+            {
+                newList[i] = list[i];
+            }
+            list = newList;
+        }
+        list[size] = obj;
+        size++;
     }
     public void Remove(object obj)
     {
-        throw new NotImplementedException();
+        int idx = Find(obj);
+        if (idx != -1)
+        {
+            for (int i = idx; i < list.Length-1; i++)
+            {
+                list[i] = list[i + 1];
+            }
+            list[size] = null;
+            size--;
+        }
     }
     public object? Get(int index) 
     {
-        throw new NotImplementedException();
+        if (index >= 0 && index < size)
+        {
+            return list[index];
+        }
+        return null;
     }
     public bool Contains(object obj)
     {
-        throw new NotImplementedException();
+        return Find(obj) != -1;
     }
     public int Find(object obj)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < size; i++)
+        {
+            if (obj == list[i]) 
+                return i;
+        }
+        return -1;
     }
 
     public IEnumerator<object> GetEnumerator()
@@ -36,5 +68,5 @@ public class List : IEnumerable<object>
         throw new NotImplementedException();
     }
 
-    public int Count {get;}
+    public int Count { get { return size; } }
 }
