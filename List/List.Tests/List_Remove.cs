@@ -29,29 +29,16 @@ public class List_Remove
         list.Add("Hello");
         list.Add("Beautiful");
         list.Add("World");
-        
-        list.Remove(
-            list.Get( 
-                list.Find("Hello")
-            )
-        );
+
+        list.Remove("Hello");
         Assert.Equal(2,list.Count);
         Assert.Equal("Beautiful", list.Get( 0 ));
 
-        list.Remove(
-            list.Get( 
-                list.Find("Beautiful")
-            )
-        );
+        list.Remove("Beautiful");
         Assert.Equal(1,list.Count);
         Assert.Equal("World", list.Get( 0 ));
 
-
-        list.Remove(
-            list.Get( 
-                list.Find("World")
-            )
-        );
+        list.Remove("World");
         Assert.Equal(0,list.Count);
         Assert.Null(list.Get( 0 ));
     }
